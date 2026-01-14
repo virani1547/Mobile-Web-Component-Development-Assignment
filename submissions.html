@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submissions - EduLearn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50">
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="flex items-center gap-2 text-2xl font-bold text-blue-600">
+          <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">EL</div>
+          EduLearn
+        </a>
+        <div class="flex items-center gap-2">
+          <span id="user-name" class="text-gray-700">User</span>
+          <button id="logout-btn" class="p-2 hover:bg-gray-100 rounded-lg transition">
+            <i class="fas fa-sign-out-alt text-gray-700"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-gray-900">Student Submissions</h1>
+      <p class="text-gray-600 mt-2">Review and grade student submissions</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+      <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option>All Courses</option>
+        <option>Course 1</option>
+        <option>Course 2</option>
+      </select>
+      <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option>All Assignments</option>
+        <option>Assignment 1</option>
+        <option>Assignment 2</option>
+      </select>
+      <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option>All Statuses</option>
+        <option>Pending</option>
+        <option>Submitted</option>
+        <option>Graded</option>
+      </select>
+      <input type="text" placeholder="Search student name..." class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+    </div>
+
+    <!-- Submissions Table -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <table class="w-full">
+        <thead class="bg-gray-50 border-b">
+          <tr>
+            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Student</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Assignment</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Submitted</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Status</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Grade</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="submissions-table">
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-6 py-4 text-gray-900 font-medium">John Doe</td>
+            <td class="px-6 py-4 text-gray-600">Assignment 1</td>
+            <td class="px-6 py-4 text-gray-600">Jan 2, 2026</td>
+            <td class="px-6 py-4">
+              <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Submitted</span>
+            </td>
+            <td class="px-6 py-4 text-gray-600">-</td>
+            <td class="px-6 py-4">
+              <a href="/grade.html?submission-id=1" class="text-blue-600 hover:text-blue-700 font-medium">Grade</a>
+            </td>
+          </tr>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-6 py-4 text-gray-900 font-medium">Jane Smith</td>
+            <td class="px-6 py-4 text-gray-600">Assignment 1</td>
+            <td class="px-6 py-4 text-gray-600">Jan 1, 2026</td>
+            <td class="px-6 py-4">
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Graded</span>
+            </td>
+            <td class="px-6 py-4 text-gray-900 font-bold">95/100</td>
+            <td class="px-6 py-4">
+              <a href="/grade.html?submission-id=2" class="text-blue-600 hover:text-blue-700 font-medium">Edit</a>
+            </td>
+          </tr>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-6 py-4 text-gray-900 font-medium">Bob Johnson</td>
+            <td class="px-6 py-4 text-gray-600">Assignment 1</td>
+            <td class="px-6 py-4 text-gray-600">-</td>
+            <td class="px-6 py-4">
+              <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Missing</span>
+            </td>
+            <td class="px-6 py-4 text-gray-600">-</td>
+            <td class="px-6 py-4">
+              <button class="text-blue-600 hover:text-blue-700 font-medium">Remind</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="/shared.js"></script>
+  <script>
+    const user = ensureAuthenticated();
+    document.getElementById('user-name').textContent = user.first_name || 'User';
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = './login.html';
+    });
+
+    async function loadSubmissions() {
+      try {
+        // Load submissions from API
+        const submissions = await api.get('/submissions');
+        // Process and display
+      } catch (err) {
+        console.error('Error loading submissions:', err);
+      }
+    }
+
+    loadSubmissions();
+  </script>
+</body>
+</html>

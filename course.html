@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Details - EduLearn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50">
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="flex items-center gap-2 text-2xl font-bold text-blue-600">
+          <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">EL</div>
+          EduLearn
+        </a>
+        <div class="flex items-center gap-2">
+          <span id="user-name" class="text-gray-700">User</span>
+          <button id="logout-btn" class="p-2 hover:bg-gray-100 rounded-lg transition">
+            <i class="fas fa-sign-out-alt text-gray-700"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Course Header -->
+  <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href="/courses.html" class="text-blue-200 hover:text-white mb-4 inline-flex items-center gap-2">
+        <i class="fas fa-arrow-left"></i> Back to Courses
+      </a>
+      <h1 id="course-title" class="text-4xl font-bold mb-4">Loading...</h1>
+      <p id="course-desc" class="text-xl text-blue-100 mb-6">Loading...</p>
+      <div class="flex gap-4">
+        <button class="px-6 py-2 bg-white text-blue-600 rounded-lg hover:bg-gray-100 transition font-bold">Drop Course</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Tabs -->
+    <div class="flex gap-4 border-b border-gray-200 mb-8">
+      <button class="tab-btn active px-4 py-2 border-b-2 border-blue-600 text-blue-600 font-medium" data-tab="overview">Overview</button>
+      <button class="tab-btn px-4 py-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900" data-tab="content">Content</button>
+      <button class="tab-btn px-4 py-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900" data-tab="assignments">Assignments</button>
+      <button class="tab-btn px-4 py-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900" data-tab="people">People</button>
+    </div>
+
+    <!-- Overview Tab -->
+    <div id="overview-tab" class="tab-content">
+      <div class="grid grid-cols-3 gap-8">
+        <div class="col-span-2">
+          <div class="bg-white rounded-lg shadow p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Course Overview</h2>
+            <p id="course-full-desc" class="text-gray-700 leading-relaxed">Loading...</p>
+          </div>
+          <div class="bg-white rounded-lg shadow p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Learning Objectives</h2>
+            <ul class="space-y-3">
+              <li class="flex gap-3">
+                <i class="fas fa-check text-green-600 mt-1"></i>
+                <span class="text-gray-700">Understand fundamental concepts</span>
+              </li>
+              <li class="flex gap-3">
+                <i class="fas fa-check text-green-600 mt-1"></i>
+                <span class="text-gray-700">Apply knowledge to real-world problems</span>
+              </li>
+              <li class="flex gap-3">
+                <i class="fas fa-check text-green-600 mt-1"></i>
+                <span class="text-gray-700">Collaborate with peers</span>
+              </li>
+              <li class="flex gap-3">
+                <i class="fas fa-check text-green-600 mt-1"></i>
+                <span class="text-gray-700">Develop critical thinking skills</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+          <div class="bg-white rounded-lg shadow p-6 sticky top-24">
+            <h3 class="text-lg font-bold text-gray-900 mb-6">Course Progress</h3>
+            <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+              <div class="bg-blue-600 h-3 rounded-full" style="width: 65%"></div>
+            </div>
+            <p class="text-gray-600 text-sm mb-6">65% complete</p>
+
+            <div class="space-y-4 border-t border-gray-200 pt-6">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-video text-blue-600"></i>
+                <span class="text-gray-700">12 Video Lessons</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-clipboard-list text-purple-600"></i>
+                <span class="text-gray-700">5 Assignments</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-quiz text-green-600"></i>
+                <span class="text-gray-700">3 Quizzes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other Tabs -->
+    <div id="content-tab" class="tab-content hidden">
+      <div class="bg-white rounded-lg shadow p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Course Content</h2>
+        <p class="text-gray-600">Course content will be displayed here</p>
+      </div>
+    </div>
+
+    <div id="assignments-tab" class="tab-content hidden">
+      <div id="assignments-list" class="space-y-4"></div>
+    </div>
+
+    <div id="people-tab" class="tab-content hidden">
+      <div class="bg-white rounded-lg shadow p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Course Participants</h2>
+        <p class="text-gray-600">Instructor and enrolled students</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/shared.js"></script>
+  <script>
+    const user = ensureAuthenticated();
+    const courseId = getUrlParam('id');
+
+    document.getElementById('user-name').textContent = user.first_name || 'User';
+
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('active', 'border-blue-600', 'text-blue-600');
+          b.classList.add('border-transparent', 'text-gray-600');
+        });
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+
+        btn.classList.add('active', 'border-blue-600', 'text-blue-600');
+        btn.classList.remove('border-transparent', 'text-gray-600');
+        document.getElementById(`${btn.dataset.tab}-tab`).classList.remove('hidden');
+      });
+    });
+
+    async function loadCourse() {
+      try {
+        const course = await api.get(`/courses/${courseId}`);
+        document.getElementById('course-title').textContent = course.title;
+        document.getElementById('course-desc').textContent = course.description || 'No description';
+        document.getElementById('course-full-desc').textContent = course.description || 'No detailed description available';
+
+        // Load assignments
+        const assignments = await api.get(`/assignments/course/${courseId}`);
+        const list = document.getElementById('assignments-list');
+        list.innerHTML = assignments.map(a => `
+          <div class="bg-white rounded-lg shadow p-6">
+            <a href="/assignment.html?id=${a.id}" class="text-lg font-bold text-blue-600 hover:text-blue-700">${a.title}</a>
+            <p class="text-gray-600 mt-2">${a.description}</p>
+            <p class="text-sm text-gray-500 mt-2">Due: ${formatDate(a.due_date)}</p>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error('Error loading course:', err);
+      }
+    }
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = './login.html';
+    });
+
+    loadCourse();
+  </script>
+</body>
+</html>

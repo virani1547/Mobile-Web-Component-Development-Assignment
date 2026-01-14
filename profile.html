@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - EduLearn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50">
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="flex items-center gap-2 text-2xl font-bold text-blue-600">
+          <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">EL</div>
+          EduLearn
+        </a>
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <span id="user-name" class="text-gray-700">User</span>
+            <button id="logout-btn" class="p-2 hover:bg-gray-100 rounded-lg transition">
+              <i class="fas fa-sign-out-alt text-gray-700"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-slate-900 text-white min-h-screen fixed left-0 top-16">
+      <nav class="p-4 space-y-2">
+        <a href="/dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800">
+          <i class="fas fa-chart-line"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="/courses.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800">
+          <i class="fas fa-book"></i>
+          <span>My Courses</span>
+        </a>
+        <a href="/assignments.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800">
+          <i class="fas fa-clipboard-list"></i>
+          <span>Assignments</span>
+        </a>
+        <a href="/grades.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800">
+          <i class="fas fa-chart-bar"></i>
+          <span>Grades</span>
+        </a>
+        <a href="/profile.html" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-blue-600">
+          <i class="fas fa-user"></i>
+          <span>Profile</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 ml-64 p-8">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900">Profile</h1>
+        <p class="text-gray-600 mt-2">Manage your account information</p>
+      </div>
+
+      <!-- Profile Card -->
+      <div class="bg-white rounded-lg shadow p-8 mb-8">
+        <div class="flex items-start gap-8">
+          <div class="text-center">
+            <div class="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mx-auto mb-4"></div>
+            <button class="text-blue-600 hover:text-blue-700 font-medium">Change Photo</button>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-900" id="profile-name">User Name</h2>
+            <p class="text-gray-600 mt-1" id="profile-email">email@example.com</p>
+            <p class="text-gray-600 mt-1" id="profile-role">Student</p>
+            <p class="text-gray-600 mt-4">Joined on <span id="joined-date">Jan 1, 2024</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex gap-4 border-b border-gray-200 mb-8">
+        <button class="tab-btn active px-4 py-2 border-b-2 border-blue-600 text-blue-600 font-medium" data-tab="personal">Personal Info</button>
+        <button class="tab-btn px-4 py-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900" data-tab="account">Account Settings</button>
+        <button class="tab-btn px-4 py-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900" data-tab="notifications">Notifications</button>
+      </div>
+
+      <!-- Personal Info Tab -->
+      <div id="personal-tab" class="tab-content bg-white rounded-lg shadow p-8">
+        <form class="space-y-6">
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+              <input type="text" id="first_name" value="John" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+              <input type="text" id="last_name" value="Doe" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Bio</label>
+            <textarea id="bio" rows="4" placeholder="Tell us about yourself..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+          </div>
+          <div class="flex justify-end">
+            <button type="button" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium">Save Changes</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Account Settings Tab -->
+      <div id="account-tab" class="tab-content hidden bg-white rounded-lg shadow p-8">
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Change Password</h3>
+            <form class="space-y-4 max-w-md">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
+                <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+                <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              </div>
+              <button type="button" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium">Update Password</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications Tab -->
+      <div id="notifications-tab" class="tab-content hidden bg-white rounded-lg shadow p-8">
+        <div class="space-y-4">
+          <label class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+            <input type="checkbox" checked class="w-4 h-4">
+            <span class="ml-3">Email me when assignments are due</span>
+          </label>
+          <label class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+            <input type="checkbox" checked class="w-4 h-4">
+            <span class="ml-3">Email me when grades are posted</span>
+          </label>
+          <label class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+            <input type="checkbox" class="w-4 h-4">
+            <span class="ml-3">Email me about course updates</span>
+          </label>
+          <label class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+            <input type="checkbox" checked class="w-4 h-4">
+            <span class="ml-3">Email me about new messages</span>
+          </label>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/shared.js"></script>
+  <script>
+    const user = ensureAuthenticated();
+    document.getElementById('user-name').textContent = user.first_name || 'User';
+    document.getElementById('profile-name').textContent = `${user.first_name} ${user.last_name}`;
+    document.getElementById('profile-email').textContent = user.email;
+    document.getElementById('profile-role').textContent = (user.role || 'student').charAt(0).toUpperCase() + (user.role || 'student').slice(1);
+
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('active', 'border-blue-600', 'text-blue-600');
+          b.classList.add('border-transparent', 'text-gray-600');
+        });
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+
+        btn.classList.add('active', 'border-blue-600', 'text-blue-600');
+        btn.classList.remove('border-transparent', 'text-gray-600');
+        document.getElementById(`${btn.dataset.tab}-tab`).classList.remove('hidden');
+      });
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = './login.html';
+    });
+  </script>
+</body>
+</html>

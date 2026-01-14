@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - EduLearn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50">
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="flex items-center gap-2 text-2xl font-bold text-blue-600">
+          <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">EL</div>
+          EduLearn
+        </a>
+        <div class="flex items-center gap-2">
+          <span id="user-name" class="text-gray-700">User</span>
+          <button id="logout-btn" class="p-2 hover:bg-gray-100 rounded-lg transition">
+            <i class="fas fa-sign-out-alt text-gray-700"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-slate-900 text-white min-h-screen fixed left-0 top-16">
+      <nav class="p-4 space-y-2">
+        <a href="/dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800">
+          <i class="fas fa-chart-line"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="/courses.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800">
+          <i class="fas fa-book"></i>
+          <span>My Courses</span>
+        </a>
+        <a href="/settings.html" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-blue-600">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 ml-64 p-8">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900">Settings</h1>
+        <p class="text-gray-600 mt-2">Manage your account and application preferences</p>
+      </div>
+
+      <!-- Settings Sections -->
+      <div class="space-y-8">
+        <!-- Appearance -->
+        <div class="bg-white rounded-lg shadow p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Appearance</h2>
+          <div class="space-y-6">
+            <!-- Theme -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-3">Theme</label>
+              <div class="flex gap-4">
+                <label class="flex items-center cursor-pointer">
+                  <input type="radio" name="theme" value="light" checked class="w-4 h-4">
+                  <span class="ml-2 text-gray-700">Light</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="radio" name="theme" value="dark" class="w-4 h-4">
+                  <span class="ml-2 text-gray-700">Dark</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="radio" name="theme" value="auto" class="w-4 h-4">
+                  <span class="ml-2 text-gray-700">Auto (System)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Language -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Language</label>
+              <select class="w-full max-w-xs px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option>English</option>
+                <option>Spanish</option>
+                <option>French</option>
+                <option>German</option>
+                <option>Chinese</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="bg-white rounded-lg shadow p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Notifications</h2>
+          <div class="space-y-4">
+            <label class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+              <input type="checkbox" checked class="w-4 h-4">
+              <span class="ml-3">
+                <p class="font-medium text-gray-900">Assignment Due</p>
+                <p class="text-sm text-gray-600">Get notified when assignments are due soon</p>
+              </span>
+            </label>
+
+            <label class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+              <input type="checkbox" checked class="w-4 h-4">
+              <span class="ml-3">
+                <p class="font-medium text-gray-900">Grade Posted</p>
+                <p class="text-sm text-gray-600">Get notified when grades are posted</p>
+              </span>
+            </label>
+
+            <label class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4">
+              <span class="ml-3">
+                <p class="font-medium text-gray-900">Course Updates</p>
+                <p class="text-sm text-gray-600">Get notified about course announcements</p>
+              </span>
+            </label>
+
+            <label class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+              <input type="checkbox" checked class="w-4 h-4">
+              <span class="ml-3">
+                <p class="font-medium text-gray-900">Messages</p>
+                <p class="text-sm text-gray-600">Get notified when you receive messages</p>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Privacy & Security -->
+        <div class="bg-white rounded-lg shadow p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Privacy & Security</h2>
+          <div class="space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-medium text-gray-900">Two-Factor Authentication</p>
+                <p class="text-sm text-gray-600">Add an extra layer of security</p>
+              </div>
+              <button class="text-blue-600 hover:text-blue-700 font-medium">Enable</button>
+            </div>
+
+            <div class="pt-6 border-t border-gray-200">
+              <p class="font-medium text-gray-900 mb-4">Data & Privacy</p>
+              <div class="space-y-3">
+                <label class="flex items-center">
+                  <input type="checkbox" checked class="w-4 h-4">
+                  <span class="ml-2 text-gray-700">Allow EduLearn to use my data for analytics</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" checked class="w-4 h-4">
+                  <span class="ml-2 text-gray-700">Show my profile to other students</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-gray-200">
+              <p class="font-medium text-gray-900 mb-4">Account Data</p>
+              <div class="flex gap-4">
+                <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition font-medium">
+                  <i class="fas fa-download mr-2"></i>Download My Data
+                </button>
+                <button class="px-4 py-2 border border-red-300 text-red-600 rounded-lg hover:bg-red-50 transition font-medium">
+                  <i class="fas fa-trash mr-2"></i>Delete Account
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="flex justify-end">
+          <button class="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-bold">Save Settings</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/shared.js"></script>
+  <script>
+    const user = ensureAuthenticated();
+    document.getElementById('user-name').textContent = user.first_name || 'User';
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = './login.html';
+    });
+
+    // Load settings from localStorage
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.querySelector(`input[name="theme"][value="${savedTheme}"]`).checked = true;
+
+    // Save settings
+    document.querySelectorAll('input[name="theme"]').forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        localStorage.setItem('theme', e.target.value);
+      });
+    });
+  </script>
+</body>
+</html>

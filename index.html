@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduLearn - Modern Learning Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --secondary: #7c3aed;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --neutral: #64748b;
+    }
+  </style>
+</head>
+<body class="bg-slate-50">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2 text-2xl font-bold text-blue-600">
+          <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">EL</div>
+          EduLearn
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#features" class="text-gray-700 hover:text-blue-600 transition">Features</a>
+          <a href="#benefits" class="text-gray-700 hover:text-blue-600 transition">Benefits</a>
+          <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition">Testimonials</a>
+        </div>
+
+        <!-- Auth Buttons -->
+        <div class="flex items-center gap-4">
+          <a href="./login.html" class="px-4 py-2 text-gray-700 hover:text-blue-600 transition font-medium">Sign In</a>
+          <a href="./register.html" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">The Future of Learning</h1>
+      <p class="text-xl md:text-2xl text-blue-100 mb-8">Empowering educators and students with a modern, intuitive learning platform</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="./register.html" class="px-8 py-3 bg-white text-blue-600 rounded-lg hover:bg-gray-100 transition font-bold text-lg">Get Started Free</a>
+        <a href="#features" class="px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-400 transition font-bold text-lg">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-center mb-16">Key Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-lg">
+          <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xl mb-4">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Quality Education</h3>
+          <p class="text-gray-700">Access comprehensive courses designed by industry experts</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-lg">
+          <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center text-white text-xl mb-4">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Track Progress</h3>
+          <p class="text-gray-700">Real-time analytics and detailed performance insights</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-lg">
+          <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center text-white text-xl mb-4">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Collaborate</h3>
+          <p class="text-gray-700">Interactive discussions and group assignments</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-gradient-to-br from-amber-50 to-amber-100 p-8 rounded-lg">
+          <div class="w-12 h-12 bg-amber-600 rounded-lg flex items-center justify-center text-white text-xl mb-4">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Learn Anywhere</h3>
+          <p class="text-gray-700">Access your courses on any device, anytime</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section id="benefits" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-center mb-16">Why Choose EduLearn?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Easy to Use</h3>
+            <p class="text-gray-700">Intuitive interface designed for everyone</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Secure & Private</h3>
+            <p class="text-gray-700">Enterprise-grade security for your data</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Expert Support</h3>
+            <p class="text-gray-700">24/7 customer support team ready to help</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Scalable</h3>
+            <p class="text-gray-700">Grows with your institution's needs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-center mb-16">What Users Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-slate-50 p-8 rounded-lg border border-gray-200">
+          <div class="flex gap-1 mb-4">
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+          </div>
+          <p class="text-gray-700 mb-4">"EduLearn transformed how we teach. The platform is intuitive and our students love it!"</p>
+          <p class="font-bold text-gray-900">Prof. Sarah Johnson</p>
+          <p class="text-gray-600">Computer Science Department</p>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-slate-50 p-8 rounded-lg border border-gray-200">
+          <div class="flex gap-1 mb-4">
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+          </div>
+          <p class="text-gray-700 mb-4">"As a student, I appreciate how organized and accessible all my courses are."</p>
+          <p class="font-bold text-gray-900">Alex Chen</p>
+          <p class="text-gray-600">Computer Science Student</p>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-slate-50 p-8 rounded-lg border border-gray-200">
+          <div class="flex gap-1 mb-4">
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+            <i class="fas fa-star text-yellow-400"></i>
+          </div>
+          <p class="text-gray-700 mb-4">"The support team is amazing. Any questions are answered immediately."</p>
+          <p class="font-bold text-gray-900">Maria Garcia</p>
+          <p class="text-gray-600">Department Head</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">EL</div>
+            <span class="text-xl font-bold text-white">EduLearn</span>
+          </div>
+          <p class="text-sm">Modern learning management system for education.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4">Product</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white transition">Features</a></li>
+            <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+            <li><a href="#" class="hover:text-white transition">Security</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4">Company</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white transition">About</a></li>
+            <li><a href="#" class="hover:text-white transition">Blog</a></li>
+            <li><a href="#" class="hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4">Legal</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white transition">Privacy</a></li>
+            <li><a href="#" class="hover:text-white transition">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-700 pt-8 text-center">
+        <p class="text-sm">&copy; 2026 EduLearn. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

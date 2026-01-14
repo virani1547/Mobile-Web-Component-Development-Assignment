@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignments - EduLearn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50">
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="flex items-center gap-2 text-2xl font-bold text-blue-600">
+          <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">EL</div>
+          EduLearn
+        </a>
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <span id="user-name" class="text-gray-700">User</span>
+            <button id="logout-btn" class="p-2 hover:bg-gray-100 rounded-lg transition">
+              <i class="fas fa-sign-out-alt text-gray-700"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-slate-900 text-white min-h-screen fixed left-0 top-16">
+      <nav class="p-4 space-y-2">
+        <a href="/dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800">
+          <i class="fas fa-chart-line"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="/courses.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800">
+          <i class="fas fa-book"></i>
+          <span>My Courses</span>
+        </a>
+        <a href="/assignments.html" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-blue-600">
+          <i class="fas fa-clipboard-list"></i>
+          <span>Assignments</span>
+        </a>
+        <a href="/grades.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800">
+          <i class="fas fa-chart-bar"></i>
+          <span>Grades</span>
+        </a>
+        <a href="/profile.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800">
+          <i class="fas fa-user"></i>
+          <span>Profile</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 ml-64 p-8">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900">Assignments</h1>
+        <p class="text-gray-600 mt-2">Track all your assignments and submissions</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex gap-4 mb-8 border-b border-gray-200">
+        <button class="filter-tab active px-4 py-2 border-b-2 border-blue-600 text-blue-600 font-medium" data-filter="all">All</button>
+        <button class="filter-tab px-4 py-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900" data-filter="upcoming">Upcoming</button>
+        <button class="filter-tab px-4 py-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900" data-filter="overdue">Overdue</button>
+        <button class="filter-tab px-4 py-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900" data-filter="completed">Completed</button>
+      </div>
+
+      <!-- Assignments List -->
+      <div id="assignments-list" class="space-y-4">
+        <!-- Loading state -->
+        <div class="text-center py-12">
+          <i class="fas fa-spinner fa-spin text-3xl text-blue-600 mb-4"></i>
+          <p class="text-gray-600">Loading assignments...</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/shared.js"></script>
+  <script>
+    const user = ensureAuthenticated();
+    document.getElementById('user-name').textContent = user.first_name || 'User';
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = './login.html';
+    });
+
+    let allAssignments = [];
+
+    async function loadAssignments() {
+      try {
+        allAssignments = await api.get('/assignments');
+        displayAssignments(allAssignments);
+      } catch (err) {
+        console.error('Error loading assignments:', err);
+      }
+    }
+
+    function displayAssignments(assignments) {
+      const list = document.getElementById('assignments-list');
+      if (assignments.length === 0) {
+        list.innerHTML = '<div class="text-center py-12 text-gray-600">No assignments found</div>';
+        return;
+      }
+
+      list.innerHTML = assignments.map(assignment => {
+        const daysUntil = getDaysUntil(assignment.due_date);
+        let statusColor = 'bg-blue-100 text-blue-700';
+        let statusText = 'Upcoming';
+
+        if (daysUntil < 0) {
+          statusColor = 'bg-red-100 text-red-700';
+          statusText = 'Overdue';
+        } else if (daysUntil === 0) {
+          statusColor = 'bg-orange-100 text-orange-700';
+          statusText = 'Due Today';
+        }
+
+        return `
+          <a href="./assignment.html?id=${assignment.id}" class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 block">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">${assignment.title}</h3>
+                <p class="text-gray-600 text-sm mt-1">Course ID: ${assignment.course_id}</p>
+              </div>
+              <span class="px-3 py-1 ${statusColor} rounded-full text-sm font-medium">${statusText}</span>
+            </div>
+            <p class="text-gray-700 mb-4">${assignment.description || 'No description'}</p>
+            <div class="flex justify-between items-center">
+              <div class="text-sm text-gray-600">
+                <i class="fas fa-calendar-alt mr-2"></i>Due: ${formatDate(assignment.due_date)}
+              </div>
+              <button class="text-blue-600 hover:text-blue-700 font-medium">Submit</button>
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    // Filter functionality
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.filter-tab').forEach(t => {
+          t.classList.remove('active', 'border-blue-600', 'text-blue-600');
+          t.classList.add('border-transparent', 'text-gray-600');
+        });
+        tab.classList.add('active', 'border-blue-600', 'text-blue-600');
+        tab.classList.remove('border-transparent', 'text-gray-600');
+
+        const filter = tab.dataset.filter;
+        let filtered = allAssignments;
+
+        if (filter === 'upcoming') {
+          filtered = allAssignments.filter(a => getDaysUntil(a.due_date) > 0);
+        } else if (filter === 'overdue') {
+          filtered = allAssignments.filter(a => getDaysUntil(a.due_date) < 0);
+        } else if (filter === 'completed') {
+          filtered = allAssignments.filter(a => false); // Add logic later
+        }
+
+        displayAssignments(filtered);
+      });
+    });
+
+    loadAssignments();
+  </script>
+</body>
+</html>
